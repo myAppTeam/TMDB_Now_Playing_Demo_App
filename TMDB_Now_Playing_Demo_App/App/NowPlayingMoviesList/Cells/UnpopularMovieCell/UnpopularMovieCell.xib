@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UnpopularMovieCell" id="XFu-hX-ysp" customClass="UnpopularMovieCell" customModule="TMDB_Now_Playing_Demo_App" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="488" height="250"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dza-KR-UIY">
+                <rect key="frame" x="0.0" y="0.0" width="488" height="250"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LbJ-hS-F23">
+                        <rect key="frame" x="16" y="8" width="456" height="234"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YLZ-YI-TAo">
+                                <rect key="frame" x="8" y="8" width="219" height="218"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TKg-BJ-sqy">
+                                <rect key="frame" x="235" y="8" width="213" height="218"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFy-xD-QDw">
+                                        <rect key="frame" x="0.0" y="0.0" width="213" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="My Name is" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1P-2V-xgk">
+                                        <rect key="frame" x="0.0" y="0.0" width="213" height="218"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" name="MoviePosterBGColor"/>
+                        <constraints>
+                            <constraint firstItem="TKg-BJ-sqy" firstAttribute="bottom" secondItem="YLZ-YI-TAo" secondAttribute="bottom" id="1U6-Ku-xcW"/>
+                            <constraint firstAttribute="bottom" secondItem="YLZ-YI-TAo" secondAttribute="bottom" constant="8" id="BfB-DB-rpb"/>
+                            <constraint firstItem="TKg-BJ-sqy" firstAttribute="leading" secondItem="YLZ-YI-TAo" secondAttribute="trailing" constant="8" id="SSf-Iy-h39"/>
+                            <constraint firstItem="YLZ-YI-TAo" firstAttribute="width" secondItem="LbJ-hS-F23" secondAttribute="width" multiplier="0.48" id="gcY-0I-bWs"/>
+                            <constraint firstItem="YLZ-YI-TAo" firstAttribute="top" secondItem="LbJ-hS-F23" secondAttribute="top" constant="8" id="mkb-5A-UrF"/>
+                            <constraint firstItem="YLZ-YI-TAo" firstAttribute="leading" secondItem="LbJ-hS-F23" secondAttribute="leading" constant="8" id="pOE-ps-H2L"/>
+                            <constraint firstAttribute="trailing" secondItem="TKg-BJ-sqy" secondAttribute="trailing" constant="8" id="rOO-2y-k3F"/>
+                            <constraint firstItem="TKg-BJ-sqy" firstAttribute="top" secondItem="YLZ-YI-TAo" secondAttribute="top" id="u6H-bf-lHf"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="LbJ-hS-F23" secondAttribute="bottom" constant="8" id="HtP-e8-fBN"/>
+                    <constraint firstAttribute="trailing" secondItem="LbJ-hS-F23" secondAttribute="trailing" constant="16" id="VOG-GG-J1e"/>
+                    <constraint firstItem="LbJ-hS-F23" firstAttribute="top" secondItem="dza-KR-UIY" secondAttribute="top" constant="8" id="eGs-2D-N5p"/>
+                    <constraint firstItem="LbJ-hS-F23" firstAttribute="leading" secondItem="dza-KR-UIY" secondAttribute="leading" constant="16" id="eIj-ok-3Bk"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="488" height="250"/>
+            <connections>
+                <outlet property="containerView" destination="LbJ-hS-F23" id="pwG-ed-RFH"/>
+                <outlet property="overviewLabel" destination="O1P-2V-xgk" id="fvk-sK-Wik"/>
+                <outlet property="posterImageView" destination="YLZ-YI-TAo" id="5xb-Wu-N3u"/>
+                <outlet property="titleLabel" destination="wFy-xD-QDw" id="q4g-kc-fr4"/>
+            </connections>
+            <point key="canvasLocation" x="110.14492753623189" y="235.71428571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="MoviePosterBGColor">
+            <color red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
