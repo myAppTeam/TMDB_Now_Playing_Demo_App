@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,11 +42,55 @@
                     <navigationItem key="navigationItem" id="21w-GG-4UI"/>
                     <connections>
                         <outlet property="collectionView" destination="wN2-es-8nw" id="j3P-Gn-h6n"/>
+                        <segue destination="evd-bH-s2T" kind="show" identifier="showMovieDetails" id="dw7-Z1-8YT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="937.68115942028987" y="65.625"/>
+        </scene>
+        <!--Movie Details View Controller-->
+        <scene sceneID="GJi-ip-0oI">
+            <objects>
+                <viewController storyboardIdentifier="MovieDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="evd-bH-s2T" customClass="MovieDetailsViewController" customModule="TMDB_Now_Playing_Demo_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3dh-JA-o46">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFv-uz-h5c">
+                                <rect key="frame" x="16" y="104" width="382" height="742"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="74O-VX-dro">
+                                        <rect key="frame" x="8" y="8" width="366" height="726"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="MoviePosterBGColor"/>
+                                <constraints>
+                                    <constraint firstItem="74O-VX-dro" firstAttribute="top" secondItem="ZFv-uz-h5c" secondAttribute="top" constant="8" id="1p5-yV-xsg"/>
+                                    <constraint firstAttribute="trailing" secondItem="74O-VX-dro" secondAttribute="trailing" constant="8" id="Tef-Kg-Ehy"/>
+                                    <constraint firstItem="74O-VX-dro" firstAttribute="leading" secondItem="ZFv-uz-h5c" secondAttribute="leading" constant="8" id="tde-49-Vda"/>
+                                    <constraint firstAttribute="bottom" secondItem="74O-VX-dro" secondAttribute="bottom" constant="8" id="yiI-M6-mF5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ge7-mE-zXG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZFv-uz-h5c" firstAttribute="leading" secondItem="ge7-mE-zXG" secondAttribute="leading" constant="16" id="I9K-CX-WKw"/>
+                            <constraint firstItem="ge7-mE-zXG" firstAttribute="bottom" secondItem="ZFv-uz-h5c" secondAttribute="bottom" constant="16" id="UlS-tH-kRI"/>
+                            <constraint firstItem="ZFv-uz-h5c" firstAttribute="top" secondItem="ge7-mE-zXG" secondAttribute="top" constant="16" id="Uzg-B4-nsI"/>
+                            <constraint firstItem="ge7-mE-zXG" firstAttribute="trailing" secondItem="ZFv-uz-h5c" secondAttribute="trailing" constant="16" id="pGT-g7-txg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="1ra-VP-ICO"/>
+                    <connections>
+                        <outlet property="containerView" destination="ZFv-uz-h5c" id="CJr-6k-MhU"/>
+                        <outlet property="posterImageView" destination="74O-VX-dro" id="c4a-nW-sT8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RbO-Nq-HW5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1699" y="68"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GJh-M0-JrU">
@@ -67,6 +112,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="MoviePosterBGColor">
+            <color red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

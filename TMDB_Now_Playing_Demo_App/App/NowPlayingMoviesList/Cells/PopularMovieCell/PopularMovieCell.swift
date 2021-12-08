@@ -7,20 +7,22 @@
 
 import UIKit
 
-class PopularMovieCell: UICollectionViewCell {
+class PopularMovieCell: BaseCollectionViewCell {
 
     static let reuseIdentifier = "PopularMovieCell"
-    @IBOutlet weak private var posterImageView: UIImageView!
+    @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak private var containerView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        posterImageView.image = UIImage(named: "")
         [containerView, posterImageView].forEach({ _view in
             _view.layer.cornerRadius = 10
         })
     }
     
     func configure(movie: Movie) {
+//        _ = ImageCache(url: movie.backdropURL)
         self.posterImageView.downloaded(from: movie.backdropURL, contentMode: .scaleToFill)
     }
 }

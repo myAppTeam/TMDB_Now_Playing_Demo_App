@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 class Box<T> {
     typealias CompletionHandler = (() -> Void)
+    private var observers = [String: CompletionHandler]()
     
     var value : T {
         didSet {
@@ -16,11 +18,21 @@ class Box<T> {
         }
     }
     
-    private var observers = [String: CompletionHandler]()
-    
-    init(_ value: T) {
-        self.value = value
+    var filteredValue : T {
+        didSet {
+            self.notify()
+        }
     }
+    
+    
+    init(_ value: T,_ filteredValue: T) {
+        self.value = value
+        self.filteredValue = filteredValue
+    }
+    
+    var isDeletedRow: Bool = false
+    var deletedRowIndex: Int!
+    var selectedMovie: Movie!
     
     public func addObserver(_ observer : NSObject, completionHandler : @escaping CompletionHandler) {
         observers[observer.description] = completionHandler

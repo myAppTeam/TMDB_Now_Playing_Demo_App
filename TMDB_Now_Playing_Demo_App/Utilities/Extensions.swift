@@ -8,9 +8,9 @@
 import UIKit.UIImageView
 
 private var activityIndicatorAssociationKey: UInt8 = 0
+private let imageCache = NSCache<NSString, UIImage>()
 
-extension UIImageView {
-    
+extension UIView {
     var activityIndicator: UIActivityIndicatorView! {
         get {
             return objc_getAssociatedObject(self, &activityIndicatorAssociationKey) as? UIActivityIndicatorView
@@ -32,7 +32,7 @@ extension UIImageView {
             }
             self.activityIndicator.hidesWhenStopped = true
             self.activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0);
-            self.activityIndicator.center = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.height / 2);
+            self.activityIndicator.center = self.center
             self.activityIndicator.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin , .flexibleTopMargin , .flexibleBottomMargin]
             self.activityIndicator.isUserInteractionEnabled = false
             OperationQueue.main.addOperation({ () -> Void in
@@ -47,23 +47,38 @@ extension UIImageView {
             self.activityIndicator.stopAnimating()
         })
     }
-    
+}
+
+extension UIImageView {
     
     func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         contentMode = mode
+        
         self.showActivityIndicator()
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-                else { return }
-            DispatchQueue.main.async() {
-                self.hideActivityIndicator()
-                self.image = image
-                self.layoutIfNeeded()
-            }
-        }.resume()
+        if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) {
+            self.hideActivityIndicator()
+            print("imageCache local")
+            self.image = nil
+            self.image = cachedImage
+        }else {
+            OperationQueue.main.addOperation({ () -> Void in
+                URLSession.shared.dataTask(with: url) { data, response, error in
+                    guard
+                        let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                        let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                        let data = data, error == nil,
+                        let image = UIImage(data: data)
+                    else { return }
+                    imageCache.setObject(image, forKey: url.absoluteString as NSString)
+                    DispatchQueue.main.async() {
+                        self.hideActivityIndicator()
+                        print("imageCache downloaded")
+                        self.image = nil
+                        self.image = image
+                        self.layoutIfNeeded()
+                    }
+                }.resume()
+            })
+        }
     }
 }

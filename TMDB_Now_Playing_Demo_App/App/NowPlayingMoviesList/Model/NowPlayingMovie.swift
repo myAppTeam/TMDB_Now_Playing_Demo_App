@@ -32,7 +32,6 @@ struct Movie: Codable, Hashable {
     let video: Bool
     let voteAverage: Double
     let voteCount: Int
-    
     public var posterURL: URL {
         return URL(string: "https://image.tmdb.org/t/p/w342\(posterPath ?? "")")!
     }

@@ -10,7 +10,7 @@ import Foundation
 final class TheMovieDatabaseStore: TheMovieDatabaseServiceProtocol {
     
     static let shared = TheMovieDatabaseStore()
-    private let apiKey = "XXXXXXXXXX"
+    private let apiKey = "098ff8277342576ba77ad5a5bad71fc0"
     private let baseURL = "https://api.themoviedb.org/3/movie/"
     private let urlSession = URLSession.shared
     
@@ -43,6 +43,8 @@ final class TheMovieDatabaseStore: TheMovieDatabaseServiceProtocol {
             errorHandler(MovieError.invalidEndpoint)
             return
         }
+        urlSession.configuration.timeoutIntervalForRequest = 30
+        urlSession.configuration.timeoutIntervalForResource = 30
         
         urlSession.dataTask(with: url) { (data, response, error) in
             if error != nil {

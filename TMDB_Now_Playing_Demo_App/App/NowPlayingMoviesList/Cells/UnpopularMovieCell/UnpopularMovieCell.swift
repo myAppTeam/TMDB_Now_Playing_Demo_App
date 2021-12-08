@@ -7,17 +7,18 @@
 
 import UIKit
 
-class UnpopularMovieCell: UICollectionViewCell {
+class UnpopularMovieCell: BaseCollectionViewCell {
 
     static let reuseIdentifier = "UnpopularMovieCell"
     
-    @IBOutlet weak private var posterImageView: UIImageView!
+    @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var overviewLabel: UILabel!
     @IBOutlet weak private var containerView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        posterImageView.image = UIImage(named: "")
         [containerView, posterImageView].forEach({ _view in
             _view.layer.cornerRadius = 10
         })
@@ -26,8 +27,7 @@ class UnpopularMovieCell: UICollectionViewCell {
     func configure(movie: Movie) {
         titleLabel.text = movie.title
         overviewLabel.text = movie.overview
-
+//        _ = ImageCache(url: movie.posterURL)
         self.posterImageView.downloaded(from: movie.posterURL, contentMode: .scaleToFill)
-        
     }
 }
