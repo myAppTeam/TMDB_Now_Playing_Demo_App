@@ -1,1 +1,1 @@
-# TMDB_Now_Playing_Demo_App
+# The Movies Database_Now_Playing_Demo_App
